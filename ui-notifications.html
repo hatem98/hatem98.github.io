@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Notifications {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% if user.is_superuser %}
+<div class="col-md-12">
+    <div class="card  card-plain">
+      <div class="card-header">
+        <h4 class="card-title"> Today</h4>
+
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  Country
+                </th>
+                <th>
+                  Carnet
+                </th>
+                <th>
+                  Carnet%
+                </th>
+                <th >
+                  production
+                </th>
+                <th >
+                  production%
+                </th>
+                <th>
+                  Facture a date
+                </th>
+                <th>
+                  Facture%
+                </th>
+                <th>
+                  CR
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% if t%}
+            {%for i in t %}
+              <tr>
+                <td>
+                  {{i.pays}}
+                </td>
+                <td>
+                  {{i.carnet}}
+                </td>
+                <td>
+                  {{i.avcarnet}}%
+                </td>
+                <td>
+                  {{i.production}}
+                </td>
+                <td>
+                  {{i.avproduction}}%
+                </td>
+                <td>
+                  {{i.Facturature}}
+                </td>
+                <td>
+                  {{i.avfacturation}}%
+                </td>
+                <td>
+                  {{i.CR}}
+                </td>
+              </tr>
+
+            {%endfor%}
+            {%endif%}
+            </tbody>
+          </table>
+          <button onclick="location.href = '/synthese'" style="margin:auto;display:block">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endif%}
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

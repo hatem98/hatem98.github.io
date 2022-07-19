@@ -1,0 +1,99 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Typography {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% if user.is_superuser %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title">History </h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  Country
+                </th>
+                <th>
+                  Carnet
+                </th>
+
+                <th >
+                 Carnet%
+                </th>
+               <th >
+                  production
+                </th>
+                <th >
+                  production%
+                </th>
+                <th>
+                  Facture a date
+                </th>
+                <th>
+                  Facture%
+                </th>
+                <th>
+                  CR
+                </th>
+                <th>
+                  Date
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+           {% if t%}
+            {%for i in t %}
+              <tr>
+                <td>
+                  {{i.pays}}
+                </td>
+                <td>
+                  {{i.carnet}}
+                </td>
+                <td>
+                  {{i.avcarnet}}%
+                </td>
+                <td>
+                  {{i.production}}
+                </td>
+                <td>
+                  {{i.avproduction}}%
+                </td>
+                <td>
+                  {{i.Facturature}}
+                </td>
+                <td>
+                  {{i.avfacturation}}%
+                </td>
+                <td>
+                  {{i.CR}}
+                </td>
+                <td>
+
+                  {{i.date }}
+                </td>
+              </tr>
+
+            {%endfor%}
+            {%endif%}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<button onclick="location.href = '/record'" style="margin:auto;display:block" >Update</button>
+    {% endif %}
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

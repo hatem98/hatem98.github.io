@@ -1,0 +1,112 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% if user.is_superuser %}
+<form action="validate" method="POST" class="text-center">
+        {% csrf_token %}
+        Budget(K) : <input type="text" name="user" class="text-center" ><br><br>
+        Employees: <input type="text" name = "pass" class="text-center" ><br><br>
+        <input type="submit" value="Update">
+</form>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title"> Recrutement</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  0-1
+                </th>
+                <th>
+                  1-2
+                </th>
+                <th>
+                  2-4
+                </th>
+                <th >
+                  4-8
+                </th>
+                <th >
+                  >8
+                </th>
+                <th >
+                  CA (kTND)
+                </th>
+                <th >
+                  Masse salariale (kTND)
+                </th>
+                <th >
+
+                  Marge %
+                </th>
+                <th >
+                  Marge Brute (kTND)
+                </th>
+                <th >
+                  Year
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+            {% if d%}
+            {%for i in d %}
+              <tr>
+                <td>
+                  {{i.1}}
+                </td>
+                <td>
+                  {{i.3}}
+                </td>
+                <td>
+                  {{i.5}}
+                </td>
+                <td>
+                  {{i.8}}
+                </td>
+                <td>
+                  {{i.sup8}}
+                </td>
+                <td>
+                  {{i.CA}}
+                </td>
+                <td>
+                  {{i.masse_salariale}}
+                </td>
+                <td >
+                  {{i.margeper}}%
+                </td>
+                <td>
+                  {{i.marge}}
+                </td>
+                <td>
+                  {{i.year}}
+                </td>
+
+              </tr>
+
+            {%endfor%}
+            {%endif%}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
